@@ -25,15 +25,22 @@ export const THOUGHT_BUBBLES = {
 
 // World Coordinates (as percentages of the container)
 export const WORLD_COORDINATES = {
-    ENTRANCE: { x: 50, y: 100 },
-    EXIT: { x: 50, y: 110 },
+    ENTRANCE: { x: 50, y: 95 }, // Bottom center (customers enter from here)
+    EXIT: { x: 50, y: 105 }, // Off-screen bottom for exit
     QUEUE_SPOTS: [
-        { x: 20, y: 80 },
-        { x: 30, y: 80 },
-        { x: 40, y: 80 },
-        { x: 50, y: 80 },
+        { x: 20, y: 75 }, // Queue waiting area - bottom left
+        { x: 30, y: 75 },
+        { x: 70, y: 75 }, // Bottom right side
+        { x: 80, y: 75 },
     ],
-    BAR_POSITION: { x: 50, y: 50 },
+    BAR_POSITION: { x: 50, y: 45 }, // Customer approaches the genius bar (center-middle)
+    PLAYER_POSITION: { x: 50, y: 35 }, // Player stays behind the genius bar
+    STATIONS: {
+        order: { x: 50, y: 35 }, // Same as player position
+        template: { x: 30, y: 30 }, // Left side station
+        compose: { x: 70, y: 30 }, // Right side station
+        finish: { x: 50, y: 20 }, // Back station
+    },
 };
 
 // Customer Data

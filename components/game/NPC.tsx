@@ -46,11 +46,21 @@ const NPC: React.FC<NPCProps> = ({ customer, onClick }) => {
     
     const animationClass = () => {
         if (customer.state === 'celebrating') return 'animate-celebrate';
+        if (customer.state === 'angry') return 'animate-shake';
         if (customer.isWaving) return 'animate-wave';
         if (customer.mood === 'angry') return 'animate-shake';
         if (customer.mood === 'impatient' || customer.isTapping) return 'animate-tap';
         return '';
     };
+
+    // Show special emoji overlay for celebration/angry states
+    const getEmotionEmoji = () => {
+        if (customer.state === 'celebrating') return '🎉';
+        if (customer.state === 'angry') return '😡';
+        return null;
+    };
+
+    const emotionEmoji = getEmotionEmoji();
 
     return (
         <div
@@ -69,6 +79,13 @@ const NPC: React.FC<NPCProps> = ({ customer, onClick }) => {
             {(customer.state === 'ordering' || customer.state === 'waiting' || customer.state === 'at_bar') && (
                 <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-white text-black text-2xl px-3 py-1 rounded-full shadow-lg animate-pop-in whitespace-nowrap">
                     {customer.thoughtBubble}
+                </div>
+            )}
+
+            {/* Emotion Emoji for Celebration/Angry states */}
+            {emotionEmoji && (
+                <div className="absolute -top-16 left-1/2 -translate-x-1/2 text-5xl animate-bounce-slow pointer-events-none">
+                    {emotionEmoji}
                 </div>
             )}
             
